@@ -1,0 +1,6 @@
+{
+  "name": "FOCUSFORGE - Student Focus Hub",
+  "description": "A neo-brutalist student focus hub featuring a Pomodoro timer, priority task management, XP leveling, daily streaks, mood tracking, and study analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

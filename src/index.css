@@ -1,0 +1,221 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #FFFDF5;
+    --brutal-black: #111111;
+    --yellow: #FFE066;
+    --coral: #FF6B6B;
+    --teal: #4ECDC4;
+  }
+
+  html {
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #FFFDF5;
+    color: #111111;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  html.dark body {
+    background-color: #121214;
+    color: #FFFDF5;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  .font-mono-nums {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Neo-Brutalist Borders & Shadows */
+.border-brutal {
+  border: 3px solid #111111;
+}
+
+.border-brutal-sm {
+  border: 2px solid #111111;
+}
+
+.shadow-brutal {
+  box-shadow: 4px 4px 0px #111111;
+}
+
+html.dark .shadow-brutal {
+  box-shadow: 4px 4px 0px #FFE066;
+}
+
+.shadow-brutal-sm {
+  box-shadow: 2px 2px 0px #111111;
+}
+
+html.dark .shadow-brutal-sm {
+  box-shadow: 2px 2px 0px #FFE066;
+}
+
+.shadow-brutal-lg {
+  box-shadow: 6px 6px 0px #111111;
+}
+
+html.dark .shadow-brutal-lg {
+  box-shadow: 6px 6px 0px #FFE066;
+}
+
+/* Dark mode surface overrides */
+html.dark .bg-white {
+  background-color: #1C1C22;
+  color: #FFFDF5;
+}
+
+html.dark .bg-\[\#FFFDF5\] {
+  background-color: #16161A;
+  color: #FFFDF5;
+}
+
+html.dark .text-\[\#111111\] {
+  color: #FFFDF5;
+}
+
+html.dark .border-\[\#111111\] {
+  border-color: #FFFDF5;
+}
+
+html.dark .border-slate-200 {
+  border-color: #333333;
+}
+
+/* Button Neo-Brutalist Lift & Press */
+.btn-brutal {
+  border: 3px solid #111111;
+  box-shadow: 4px 4px 0px #111111;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.dark .btn-brutal {
+  border-color: #FFFDF5;
+  box-shadow: 4px 4px 0px #FFE066;
+}
+
+.btn-brutal:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #111111;
+}
+
+html.dark .btn-brutal:hover:not(:disabled) {
+  box-shadow: 6px 6px 0px #FFE066;
+}
+
+.btn-brutal:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #111111;
+}
+
+html.dark .btn-brutal:active:not(:disabled) {
+  box-shadow: 2px 2px 0px #FFE066;
+}
+
+.btn-brutal:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Card Subtle Tilt on Hover */
+.card-tilt {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-tilt:hover {
+  transform: translate(-2px, -2px) rotate(-0.35deg);
+  box-shadow: 6px 6px 0px #111111;
+}
+
+html.dark .card-tilt:hover {
+  box-shadow: 6px 6px 0px #FFE066;
+}
+
+/* Infinite Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Task Entry Animation */
+@keyframes taskPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(-6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-task-pop {
+  animation: taskPop 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Preloader pulse */
+@keyframes brutalPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-brutal-pulse {
+  animation: brutalPulse 0.8s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .animate-marquee {
+    animation: none;
+    transform: none;
+  }
+}
